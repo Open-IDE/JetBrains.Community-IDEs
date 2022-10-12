@@ -28,7 +28,12 @@
     group: "{{ ansible_user }}"
     mode: '0744'
 
-- debug:
-    msg: "You need to setup Pycharm with `~/bin/launchpycharm.sh`"
+- name: Launcher - Desktop file
+  ansible.builtin.copy:
+    src: jetbrains-pycharm-ce.desktop
+    dest: "/home/{{ ansible_user }}/.local/share/applications/"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
 
-# - name: Launcher - Desktop file
+- debug:
+    msg: "You man need to setup Pycharm with `~/bin/launchpycharm.sh`"
