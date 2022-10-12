@@ -28,4 +28,7 @@
     group: "{{ ansible_user }}"
     mode: '0744'
 
+- debug:
+    msg: "You need to setup Pycharm with `~/bin/launchpycharm.sh`"
+
 # - name: Launcher - Desktop file
