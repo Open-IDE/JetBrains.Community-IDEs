@@ -1,0 +1,31 @@
+---
+- name: Create Ava directory
+  become: true
+  ansible.builtin.file:
+    path: "{{ to }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: Download PyCharm
+  ansible.builtin.get_url:
+    url: "{{ download_url }}"
+    dest: "{{ to }}/pycharm.tar.gz"
+    # checksum: "sha256:{{ checksum_url }}"
+
+- name: Extract PyCharm
+  ansible.builtin.unarchive:
+    src: "{{ to }}/pycharm.tar.gz"
+    dest: "/var/ava/"
+    creates: "/var/ava/pycharm-community-{{ version }}"
+    remote_src: yes
+
+- name: First Launch & setup
+  ansible.builtin.template:
+    src: launchpycharm.sh
+    dest: "/home/{{ ansible_user }}/bin/"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0744'
+
+# - name: Launcher - Desktop file

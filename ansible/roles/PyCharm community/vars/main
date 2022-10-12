@@ -1,0 +1,8 @@
+---
+version: "2022.2.3"
+download_url: https://download.jetbrains.com/python/pycharm-community-{{ version }}.tar.gz
+checksum_url: https://download.jetbrains.com/python/pycharm-community-{{ version }}.tar.gz.sha256
+
+to: "/var/ava"
+
+source: "targz"
