@@ -20,20 +20,12 @@
     creates: "/var/ava/pycharm-community-{{ version }}"
     remote_src: yes
 
-- name: First Launch & setup
-  ansible.builtin.template:
-    src: launchpycharm.sh.j2
-    dest: "/home/{{ ansible_user }}/bin/launchpycharm.sh"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: '0744'
+- include_tasks: 1st-launch
 
 - name: Launcher - Desktop file
+  become: true
   ansible.builtin.copy:
     src: jetbrains-pycharm-ce.desktop
     dest: "/home/{{ ansible_user }}/.local/share/applications/"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-
-- debug:
-    msg: "You man need to setup Pycharm with `~/bin/launchpycharm.sh`"
