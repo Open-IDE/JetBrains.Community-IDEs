@@ -20,7 +20,7 @@
     creates: "/var/ava/pycharm-community-{{ version }}"
     remote_src: yes
 
-- include_tasks: 1st-launch
+- include_tasks: 1st launch
 
 - name: Launcher - Desktop file
   become: true
