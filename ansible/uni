@@ -1,7 +1,0 @@
----
-- hosts: localhost #, fedora, ubuntu
-  vars:
-    source: "package"
-
-  roles:
-  - PyCharm community
