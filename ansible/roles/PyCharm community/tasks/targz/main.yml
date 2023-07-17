@@ -1,4 +1,3 @@
----
 - name: Create Ava directory
   become: true
   ansible.builtin.file:
