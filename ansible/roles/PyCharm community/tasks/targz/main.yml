@@ -23,9 +23,10 @@
 - include_tasks: 1st launch.yml
 
 - name: Launcher - Desktop file
-  become: true
-  ansible.builtin.copy:
-    src: jetbrains-pycharm-ce.desktop
-    dest: "/home/{{ ansible_user }}/.local/share/applications/"
+  ansible.builtin.template:
+    src: jetbrains-pycharm-ce.desktop.j2
+    dest: "/home/{{ ansible_user }}/.local/share/applications/jetbrains-pycharm-ce.desktop"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
+  become: true
+    # mode: '0644'
