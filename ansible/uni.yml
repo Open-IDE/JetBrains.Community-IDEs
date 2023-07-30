@@ -2,7 +2,6 @@
   vars:
     # Host_vars
     ansible_become_password: u
-    ansible_user: "{{lookup('ansible.builtin.env', 'USER')}}"
 
   roles:
   - PyCharm community
