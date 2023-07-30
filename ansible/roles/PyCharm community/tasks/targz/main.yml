@@ -3,8 +3,8 @@
   ansible.builtin.file:
     path: "{{ to }}"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
 
 - name: Download PyCharm
   ansible.builtin.get_url:
@@ -24,8 +24,8 @@
 - name: Launcher - Desktop file
   ansible.builtin.template:
     src: jetbrains-pycharm-ce.desktop.j2
-    dest: "/home/{{ ansible_user }}/.local/share/applications/jetbrains-pycharm-ce.desktop"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    dest: "/home/{{ ansible_env.USER }}/.local/share/applications/jetbrains-pycharm-ce.desktop"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
     mode: '0644'
   become: true
