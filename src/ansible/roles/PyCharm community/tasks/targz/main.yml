@@ -19,8 +19,6 @@
     creates: "/var/ava/pycharm-community-{{ version }}"
     remote_src: yes
 
-- include_tasks: 1st launch.yml
-
 - name: Launcher - Desktop file
   ansible.builtin.template:
     src: jetbrains-pycharm-ce.desktop.j2
