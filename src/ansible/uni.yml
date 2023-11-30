@@ -4,4 +4,4 @@
     ansible_become_password: u
 
   roles:
-  - PyCharm community
+  - PyCharm Community
