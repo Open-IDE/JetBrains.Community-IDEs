@@ -1,24 +1,27 @@
 # Home: https://www.jetbrains.com/pycharm/download/?section=linux
 
-- name: Create Ava directory
+- name: Create directory
   become: true
   ansible.builtin.file:
-    path: "{{ to }}"
+    path: "{{ item }}"
     state: directory
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
+  loop:
+    - "{{ to }}"
+    - "{{ cache }}"
 
 - name: Download PyCharm
   ansible.builtin.get_url:
     url: "{{ download_url }}"
-    dest: "{{ to }}/pycharm.tar.gz"
+    dest: "{{ cache }}/{{ file_name }}"
     # checksum: "sha256:{{ checksum_url }}"
 
 - name: Extract PyCharm
   ansible.builtin.unarchive:
-    src: "{{ to }}/pycharm.tar.gz"
-    dest: "/var/ava/"
-    creates: "/var/ava/pycharm-community-{{ version }}"
+    src: "{{ cache }}/{{ file_name }}"
+    dest: "{{ to }}/"
+    creates: "{{ to }}/pycharm-community-{{ version }}"
     remote_src: yes
 
 - name: Launcher - Desktop file
