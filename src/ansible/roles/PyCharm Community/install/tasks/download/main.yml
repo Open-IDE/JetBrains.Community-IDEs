@@ -30,5 +30,5 @@
     dest: "/home/{{ ansible_env.USER }}/.local/share/applications/jetbrains-pycharm-ce.desktop"
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
-    mode: '0644'
+    mode: '0664'
   become: true
