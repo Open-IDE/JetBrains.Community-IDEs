@@ -1,3 +1,7 @@
 - hosts: localhost
   roles:
-  - PyCharm Community
+  - role: UniInc.IntelliJ-IDEA-Community
+    tags: [intellij, all]
+    
+  - role: UniInc.PyCharm-Community
+    tags: [pycharm, all]
